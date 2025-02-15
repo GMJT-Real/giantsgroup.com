@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巨头集团</title>
+    <style>
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 动态渐变背景 */
+        body {
+            background: linear-gradient(-45deg, #0F1A2F, #2A2356, #5E2BFF);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: Arial, sans-serif;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* 主要容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* 头部样式 */
+        .header {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 漂浮动画 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .logo {
+            font-size: 4rem;
+            text-shadow: 3px 3px 0 rgba(255,107,53,0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* 分部卡片 */
+        .department-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .department-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* 人员展示 */
+        .member-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            margin-top: 3rem;
+        }
+
+        .member-card {
+            background: linear-gradient(45deg, #FF6B35, #FF8E53);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        /* 背景动画 */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1 class="logo">巨头集团</h1>
+            <p style="margin-top: 1rem; font-size: 1.2rem;">筑梦云端 链接未来</p>
+        </header>
+
+        <!-- 分部展示 -->
+        <section>
+            <h2 style="margin: 2rem 0; text-align: center;">核心分部</h2>
+            <div class="department-card">
+                <h3>总部</h3>
+                <p>QQ总部 - 线上交流中心</p>
+            </div>
+            <div class="department-card">
+                <h3>主要分部</h3>
+                <ul style="list-style: none; margin-top: 1rem;">
+                    <li>微信分部</li>
+                    <li>抖音分部</li>
+                    <li>我的世界分部</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 主要成员 -->
+        <section>
+            <h2 style="margin: 3rem 0; text-align: center;">核心团队</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <h3>王浩博</h3>
+                    <p>总经理</p>
+                    <p style="margin-top: 1rem; font-style: italic;">"让每个梦想都有生长的土壤"</p>
+                </div>
+                <div class="member-card">
+                    <h3>李信</h3>
+                    <p>总顾问</p>
+                    <p style="margin-top: 1rem; font-style: italic;">"战略需要想象力"</p>
+                </div>
+                <div class="member-card">
+                    <h3>呆哥</h3>
+                    <p>创意总监</p>
+                    <p style="margin-top: 1rem; font-style: italic;">"连接创造价值"</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 简单动态效果 -->
+    <script>
+        // 添加卡片入场动画
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.department-card, .member-card');
+            
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s, transform 0.5s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 * index);
+            });
+        });
+
+        // 背景颜色微调
+        let hue = 0;
+        setInterval(() => {
+            document.body.style.backgroundColor = `hsl(${hue}, 50%, 10%)`;
+            hue = (hue + 0.5) % 360;
+        }, 50);
+    </script>
+</body>
+</html>
